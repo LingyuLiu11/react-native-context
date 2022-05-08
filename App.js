@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IndexScreen from './src/screens/IndexScreen';
 
-import {BlogProvider} from './src/screens/BlogContext';
+import {Provider as BlogProvider} from './src/screens/BlogContext';
 
 function HomeScreen({ navigation }) {
   return (
