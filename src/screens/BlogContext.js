@@ -11,7 +11,8 @@ const blog_reducer = (state, action) => {
           title: `${state.length + 1}` 
         },
       ];
-    // case "delete_post":
+    case "delete_post":
+        return state.filter((post) => post.id !== action.payload);
 
     default:
       return state;
@@ -25,9 +26,15 @@ const addpost = (dispatch) => {
   };
 };
 
+const deletepost = (dispatch) => {
+    return (id) => {
+        dispatch({type: "delete_post", payload: id});
+    }
+}
+
 export const { Context, Provider } = createDataContext(
   blog_reducer,
-  { addpost },
+  { addpost, deletepost },
   []
 );
 
