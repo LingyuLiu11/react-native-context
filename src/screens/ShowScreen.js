@@ -4,13 +4,13 @@ import { Context as BlogContext } from "./BlogContext";
 
 const ShowScreen = ({ route: { params } }) => {
   const { state } = useContext(BlogContext);
-  const {id} = params;
+  
   const post = state.find((post) => post.id === params.id);
 
   return (
     <View>
       <Text>show screen</Text>
-      <Text>{id}</Text>
+      <Text>{post.title}</Text>
     </View>
   );
 };
