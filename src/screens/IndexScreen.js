@@ -10,7 +10,7 @@ import {
 import { Context as BlogContext } from "./BlogContext";
 import { EvilIcons } from "@expo/vector-icons";
 
-const IndexScreen = ({ navigation }) => {
+const IndexScreen = ({ navigation: { navigate }}) => {
   const { state, addpost, deletepost } = useContext(BlogContext);
   // console.log("posts " + blogPosts);
   return (
@@ -21,7 +21,7 @@ const IndexScreen = ({ navigation }) => {
         keyExtractor={(blogPost) => blogPost.title}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate('Show')}>
+            <TouchableOpacity onPress={() => navigate('Show', {id: item.id})}>
               <View style={styles.row}>
                 <Text style={styles.title}>
                   {item.title} - {item.id}
