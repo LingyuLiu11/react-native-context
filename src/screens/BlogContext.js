@@ -4,25 +4,32 @@ import createDataContext from "./createDataContext";
 
 const blog_reducer = (state, action) => {
   switch (action.type) {
-    case 'add_post':
-      return [...state, { title: `${state.length + 1}` }];
+    case "add_post":
+      return [
+        ...state,
+        { id: Math.random() * 99999, 
+          title: `${state.length + 1}` 
+        },
+      ];
+    // case "delete_post":
+
     default:
       return state;
   }
 };
 
 const addpost = (dispatch) => {
-    return () => {
-        dispatch({ type: 'add_post'});
-        console.log("add_post");
-    }
-  
+  return () => {
+    dispatch({ type: "add_post" });
+    console.log("add_post");
+  };
 };
 
-export const {Context, Provider} = createDataContext(
-    blog_reducer, 
-    {addpost}, 
-    []);
+export const { Context, Provider } = createDataContext(
+  blog_reducer,
+  { addpost },
+  []
+);
 
 // export const BlogProvider = ({ children }) => {
 //   // const blogposts = [
