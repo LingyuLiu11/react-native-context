@@ -8,20 +8,44 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Context as BlogContext } from "./BlogContext";
-import { EvilIcons } from "@expo/vector-icons";
+import { EvilIcons, AntDesign } from "@expo/vector-icons";
 
-const IndexScreen = ({ navigation: { navigate }}) => {
+const IndexScreen = ({ navigation }) => {
   const { state, addpost, deletepost } = useContext(BlogContext);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerTitle: (props) => (
+        <View>
+          <Text>Posts</Text>
+        </View>
+        
+      ),
+      headerRight: () => (
+        <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+          <AntDesign name="pluscircleo" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+      headerStyle: {
+        backgroundColor: "#f4511e", //Set Header color
+      },
+    });
+  }, [navigation]);
   // console.log("posts " + blogPosts);
   return (
     <View>
+      {/* <TouchableOpacity onPress={() => navigate('Create')}>
+        <AntDesign name="pluscircleo" size={24} color="black" />
+      </TouchableOpacity> */}
       <Button title=" Add Post " onPress={addpost}></Button>
       <FlatList
         data={state}
         keyExtractor={(blogPost) => blogPost.title}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => navigate('Show', {id: item.id})}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Show", { id: item.id })}
+            >
               <View style={styles.row}>
                 <Text style={styles.title}>
                   {item.title} - {item.id}
@@ -37,6 +61,8 @@ const IndexScreen = ({ navigation: { navigate }}) => {
     </View>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   row: {
