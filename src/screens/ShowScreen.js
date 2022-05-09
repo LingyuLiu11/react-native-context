@@ -15,7 +15,7 @@ const ShowScreen = ({ navigation, route: {params} }) => {
         
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Edit", {id: params.id})}>
           <AntDesign name="edit" size={24} color="black" />
         </TouchableOpacity>
       ),

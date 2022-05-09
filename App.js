@@ -9,6 +9,7 @@ import { EvilIcons, AntDesign } from "@expo/vector-icons";
 
 import {Provider as BlogProvider} from './src/screens/BlogContext';
 import CreateScreen from './src/screens/CreateScreen';
+import EditScreen from './src/screens/EditScreen';
 
 function HomeScreen({ navigation }) {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Stack.Screen name="Details" component={IndexScreen}/>
         <Stack.Screen name="Show" component={ShowScreen} />
         <Stack.Screen name="Create" component={CreateScreen} />
+        <Stack.Screen name="Edit" component={EditScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
