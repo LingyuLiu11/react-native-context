@@ -9,7 +9,9 @@ const EditScreen = ({ navigation, route: { params } }) => {
   const post = state.find((post) => post.id === params.id);
 
   return (
-    <BlogForm/>
+    <BlogForm onSubmit={()=> {
+        
+    } }/>
   );
 };
 
