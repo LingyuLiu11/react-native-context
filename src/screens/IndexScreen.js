@@ -48,7 +48,7 @@ const IndexScreen = ({ navigation }) => {
             >
               <View style={styles.row}>
                 <Text style={styles.title}>
-                  {item.title} - {item.id}
+                  {item.title} - {item.content}
                 </Text>
                 <TouchableOpacity onPress={() => deletepost(item.id)}>
                   <EvilIcons name="trash" style={styles.icon}></EvilIcons>
