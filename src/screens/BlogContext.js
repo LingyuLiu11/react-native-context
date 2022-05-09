@@ -22,8 +22,9 @@ const blog_reducer = (state, action) => {
 };
 
 const addpost = (dispatch) => {
-  return (title, content) => {
+  return (title, content, callback) => {
     dispatch({ type: "add_post", payload:  {title: title, content: content}});
+    callback();
   };
 };
 
