@@ -9,9 +9,11 @@ const EditScreen = ({ navigation, route: { params } }) => {
   const post = state.find((post) => post.id === params.id);
 
   return (
-    <BlogForm onSubmit={()=> {
-        
-    } }/>
+    <BlogForm 
+    initialValues= {{title: post.title, content: post.content}}
+    onSubmit={(title, content)=> {
+        editpost(title, content, () => navigation.navigate('Details'))
+    }}/>
   );
 };
 
