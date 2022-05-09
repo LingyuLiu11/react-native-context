@@ -2,36 +2,37 @@ import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 import { useContext, useState } from "react";
 import { Context as BlogContext } from "./BlogContext";
 import { NavigationContainer } from "@react-navigation/native";
+import BlogForm from "../components/BlogFrom";
 
 const CreateScreen = ({ navigation }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+
   const { addpost } = useContext(BlogContext);
 
   return (
-    <View>
-      <Text style={styles.label}>Title</Text>
-      <TextInput
-        style={styles.input}
-        value={title}
-        onChangeText={(text) => setTitle(text)}
-      ></TextInput>
-      <Text style={styles.label}>Content</Text>
-      <TextInput
-        style={styles.input}
-        value={content}
-        onChangeText={(text) => setContent(text)}
-      ></TextInput>
+      <BlogForm/>
+    // <View>
+    //   <Text style={styles.label}>Title</Text>
+    //   <TextInput
+    //     style={styles.input}
+    //     value={title}
+    //     onChangeText={(text) => setTitle(text)}
+    //   ></TextInput>
+    //   <Text style={styles.label}>Content</Text>
+    //   <TextInput
+    //     style={styles.input}
+    //     value={content}
+    //     onChangeText={(text) => setContent(text)}
+    //   ></TextInput>
 
-      <Button
-        title="Add post"
-        onPress={() => {
-          addpost(title, content, () => {
-              navigation.navigate('Details');
-          });
-        }}
-      ></Button>
-    </View>
+    //   <Button
+    //     title="Add post"
+    //     onPress={() => {
+    //       addpost(title, content, () => {
+    //           navigation.navigate('Details');
+    //       });
+    //     }}
+    //   ></Button>
+    // </View>
   );
 };
 
