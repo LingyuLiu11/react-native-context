@@ -30,7 +30,9 @@ const blog_reducer = (state, action) => {
 const addpost = (dispatch) => {
   return (title, content, callback) => {
     dispatch({ type: "add_post", payload: { title: title, content: content } });
-    callback();
+    if (callback) {
+        callback();
+    }
   };
 };
 
@@ -46,7 +48,10 @@ const editpost = (dispatch) => {
       type: "edit_post",
       payload: { id: id, title: title, content: content },
     });
-    callback();
+    if (callback) {
+        callback();
+    }
+    
   };
 };
 
